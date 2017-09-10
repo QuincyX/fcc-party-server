@@ -10,11 +10,7 @@ module.exports = class extends think.Controller {
     this.modelInstance = this.mongoose(this.resource);
   }
   __before() {
-    // if (this.isPost || this.isPut || this.isDelete) {
-    //   if (think.isEmpty(this.cookie('token'))) {
-    //     return false
-    //   }
-    // }
+
   }
   getResource() {
     const filename = this.__filename || __filename;
@@ -54,25 +50,25 @@ module.exports = class extends think.Controller {
     // return this.success({ id: insertId });
   }
   async deleteAction() {
-    if (!this.id) {
-      return this.fail('params error');
-    }
-    const pk = await this.modelInstance.pk;
-    const rows = await this.modelInstance.where({ [pk]: this.id }).delete();
-    return this.success({ affectedRows: rows });
+    // if (!this.id) {
+    //   return this.fail('params error');
+    // }
+    // const pk = await this.modelInstance.pk;
+    // const rows = await this.modelInstance.where({ [pk]: this.id }).delete();
+    // return this.success({ affectedRows: rows });
   }
   async putAction() {
-    if (!this.id) {
-      return this.fail('params error');
-    }
-    const pk = await this.modelInstance.pk;
-    const data = this.post();
-    delete data[pk];
-    if (think.isEmpty(data)) {
-      return this.fail('data is empty');
-    }
-    const rows = await this.modelInstance.where({ [pk]: this.id }).update(data);
-    return this.success({ affectedRows: rows });
+    // if (!this.id) {
+    //   return this.fail('params error');
+    // }
+    // const pk = await this.modelInstance.pk;
+    // const data = this.post();
+    // delete data[pk];
+    // if (think.isEmpty(data)) {
+    //   return this.fail('data is empty');
+    // }
+    // const rows = await this.modelInstance.where({ [pk]: this.id }).update(data);
+    // return this.success({ affectedRows: rows });
   }
   __call() {
 

@@ -1,16 +1,20 @@
 const BaseRest = require('./rest.js');
 const jwt = require('jsonwebtoken');
+const jwtKey = 'myHeartWillGoOn'
 
 module.exports = class extends BaseRest {
     async postAction() {
-        let user = this.mongoose('user')
-        let data = await user.find({});
-        if ('ok') {
-            let p = { "uid": 42245, "exp": Date.now() + 10 * 60 * 1000 }
-            let t = jwt.sign(p,'key')
-            this.cookie('jwt', t)
-        }
-
-        return this.success('login action ok!')
+        await this.mongoose('user').login(this.post()).then(res => {
+            this.cookie('token', res.token)
+            return this.success(res)
+        }).catch(err => {
+            return this.fail(err)
+        })
+    }
+    getAction() {
+        let info = jwt.verify(this.cookie('token'), jwtKey)
+        console.log('info>>>')
+        console.log(info)
+        return this.success(info)
     }
 };

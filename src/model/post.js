@@ -16,7 +16,7 @@ module.exports = class extends think.Mongoose {
       },
       date: {
         type: Date,
-        default () {
+        default() {
           return new Date((new Date() / 1000 + 86400 * 1) * 1000)
         }
       },
@@ -49,7 +49,7 @@ module.exports = class extends think.Mongoose {
     }
   }
   add(val) {
-    return new Promise(async(resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       let Post = this.mongoose('post')
       val.createTime = Date.now()
       let newPost = new Post(val)
@@ -73,7 +73,7 @@ module.exports = class extends think.Mongoose {
     return data
   }
   async getOne(val) {
-    return new Promise(async(resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       let Post = this.mongoose('post')
       Post.findById(val, (err, res) => {
         if (err) {
@@ -91,7 +91,7 @@ module.exports = class extends think.Mongoose {
     })
   }
   async register(val) {
-    return new Promise(async(resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       let Post = this.mongoose('post')
       Post.findById(val.postId, (err, res) => {
         if (err) {
@@ -102,10 +102,9 @@ module.exports = class extends think.Mongoose {
             errmsg: '找不到请求的资源'
           })
         } else {
-          let newData = res
-          if (newData.register.indexOf(val.userId) === -1) {
-            newData.register.push(val.userId)
-            res.update(newData, (err, newRes) => {
+          if (res.register.indexOf(val.userId) === -1) {
+            res.register.push(val.userId)
+            res.update(res, (err, newRes) => {
               if (err) {
                 reject(err)
               } else {
@@ -115,10 +114,40 @@ module.exports = class extends think.Mongoose {
           } else {
             reject({
               errno: 1000,
-              errmsg: '您已经报过名'
+              errmsg: '您已经报过名了'
             })
           }
-
+        }
+      })
+    })
+  }
+  async checkin(val) {
+    return new Promise(async (resolve, reject) => {
+      let Post = this.mongoose('post')
+      Post.findById(val.postId, (err, res) => {
+        if (err) {
+          reject(err)
+        } else if (!res) {
+          reject({
+            errno: 1000,
+            errmsg: '找不到请求的资源'
+          })
+        } else {
+          if (res.attendance.indexOf(val.userId) === -1) {
+            res.attendance.push(val.userId)
+            res.update(res, (err, newRes) => {
+              if (err) {
+                reject(err)
+              } else {
+                resolve(newRes)
+              }
+            })
+          } else {
+            reject({
+              errno: 1000,
+              errmsg: '您已经签过到了'
+            })
+          }
         }
       })
     })

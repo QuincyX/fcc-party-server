@@ -1,8 +1,8 @@
 {
   "apps": [{
-    "name": "D:devD:devfcc-party",
+    "name": "fcc-party",
     "script": "production.js",
-    "cwd": "D:\dev\fcc-party",
+    "cwd": "d:\\dev\\fcc-party",
     "exec_mode": "fork",
     "max_memory_restart": "1G",
     "autorestart": true,

@@ -2,14 +2,17 @@ module.exports = class extends think.Logic {
   postAction() {
     let rules = {
       account: {
-        string: true,       // 字段类型为 String 类型
-        required: true,     // 字段必填
-        method: 'POST'      // 指定获取数据的方式
+        string: true, 
+        required: true,
+        trim: true, 
+        contains:'@',
+        method: 'POST'
       },
       password: {
-        string: true,       // 字段类型为 String 类型
+        string: true,
         required: true, 
-        method: 'POST'       // 指定获取数据的方式
+        trim: true, 
+        method: 'POST'
       }
     }
     let msgs = {
@@ -21,7 +24,7 @@ module.exports = class extends think.Logic {
       }
     }
     if(!this.validate(rules,msgs)){
-      return this.fail('数据校验失败', this.validateErrors);
+      return this.fail('数据校验失败', this.validateErrors)
     }
   }
 };

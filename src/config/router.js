@@ -1,5 +1,4 @@
 module.exports = [
-  [/\/api/, '/api'],
   [/\/user\/login/, 'login', 'rest'],
   [/\/user\/logout/, 'logout', 'rest'],
   [/\/user(?:\/(\w+))?/, 'user?id=:1', 'rest'],

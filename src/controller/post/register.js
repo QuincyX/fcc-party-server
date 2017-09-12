@@ -3,7 +3,7 @@ const BaseRest = require('../rest.js')
 module.exports = class extends BaseRest {
   async postAction() {
     if (this.jwt) {
-      if(this.getId()){
+      if (this.getId()) {
         let Post = this.mongoose('post')
         let para = {
           postId: this.getId(),
@@ -14,7 +14,7 @@ module.exports = class extends BaseRest {
         }).catch(err => {
           return this.fail(err)
         })
-      }else{
+      } else {
         return this.fail('参数不完整')
       }
     } else {

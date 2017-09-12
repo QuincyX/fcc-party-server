@@ -11,7 +11,4 @@ module.exports = class extends Base {
     }); 
     return this.display();
   }
-  apiAction(){
-    return this.success('ok')
-  }
 };

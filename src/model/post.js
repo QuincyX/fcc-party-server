@@ -72,7 +72,7 @@ module.exports = class extends think.Mongoose {
     })
     return data
   }
-  async getOne(val) {
+  getOne(val) {
     return new Promise(async (resolve, reject) => {
       let Post = this.mongoose('post')
       Post.findById(val, (err, res) => {
@@ -90,7 +90,31 @@ module.exports = class extends think.Mongoose {
       })
     })
   }
-  async register(val) {
+  delete(id) {
+    return new Promise((resolve, reject) => {
+      let Post = this.mongoose('post')
+      Post.findByIdAndRemove(id, (err) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve('删除活动成功')
+        }
+      })
+    })
+  }
+  update(val) {
+    return new Promise((resolve, reject) => {
+      let Post = this.mongoose('post')
+      Post.findByIdAndUpdate(val.id, val, (err, doc) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(doc)
+        }
+      })
+    })
+  }
+  register(val) {
     return new Promise(async (resolve, reject) => {
       let Post = this.mongoose('post')
       Post.findById(val.postId, (err, res) => {
@@ -121,7 +145,7 @@ module.exports = class extends think.Mongoose {
       })
     })
   }
-  async checkin(val) {
+  checkin(val) {
     return new Promise(async (resolve, reject) => {
       let Post = this.mongoose('post')
       Post.findById(val.postId, (err, res) => {

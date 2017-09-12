@@ -125,6 +125,31 @@ module.exports = class extends think.Mongoose {
 			}
 		})
 	}
+	update(val) {
+		return new Promise(async (resolve, reject) => {
+			let User = this.mongoose('user')
+			// val.password = undefined
+			User.findByIdAndUpdate(val.id, val, (err, doc) => {
+				if (err) {
+					reject(err)
+				} else {
+					resolve(doc)
+				}
+			})
+		})
+	}
+	delete(id) {
+		return new Promise(async (resolve, reject) => {
+			let User = this.mongoose('user')
+			User.findByIdAndRemove(id, (err) => {
+				if (err) {
+					reject(err)
+				} else {
+					resolve('删除活动成功')
+				}
+			})
+		})
+	}
 	getInfo(val) {
 		return new Promise(async (resolve, reject) => {
 			let User = this.mongoose('user')

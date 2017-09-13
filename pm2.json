@@ -2,7 +2,7 @@
   "apps": [{
     "name": "fcc-party",
     "script": "production.js",
-    "cwd": "d:\\dev\\fcc-party",
+    "cwd": "/data/wwwroot/api.zzcowboy.com",
     "exec_mode": "fork",
     "max_memory_restart": "1G",
     "autorestart": true,

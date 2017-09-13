@@ -3,6 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <meta http-equiv="Pragma" content="no-cache">
     <meta content="" name="keywords">
     <meta name="description" content="">
@@ -42,15 +43,23 @@
                                     <li>
                                         <a href="#c02dc7ec1caf4e4592ea696d2eb33597">注册用户</a>
                                     </li><li>
-                                        <a href="#82731d89e2d04952a0ec6ec6d98b62c8">登陆</a>
-                                    </li><li>
                                         <a href="#e816d57cd6934835ac1bfd3bcfa035c8">查询用户信息</a>
+                                    </li><li>
+                                        <a href="#381d5165ecde4677b3b27bdebdfa9249">更新用户信息</a>
+                                    </li><li>
+                                        <a href="#ad98070fc3984d4daf92bbce39ff7f02">删除用户</a>
+                                    </li><li>
+                                        <a href="#82731d89e2d04952a0ec6ec6d98b62c8">登陆</a>
                                     </li><li>
                                         <a href="#fb77a88624174607aa3667f6276b5527">登出</a>
                                     </li><li>
                                         <a href="#e4e55f46cc164613a1bc617c1cf26254">新建活动</a>
                                     </li><li>
                                         <a href="#b229610e336244ab9e0d65aae69765a9">查询活动</a>
+                                    </li><li>
+                                        <a href="#a62e42984b334f92bf7a0b7fd8bb9454">修改活动</a>
+                                    </li><li>
+                                        <a href="#4fb0bae3accb4384bcbc0ace9fad0f20">删除活动</a>
                                     </li><li>
                                         <a href="#fb83f514335e412f931e7e6bed0032bb">报名活动</a>
                                     </li><li>
@@ -95,7 +104,7 @@
                                   </colgroup>
                                     <thead>
                                          <tr>
-                                            <th style="padding-left: 0px;"><span class="label label-success">Body参数名</span></th>
+                                            <th><span class="label label-success">Body参数名</span></th>
                                             <th>类型</th>
                                             <th>必需</th>
                                             <th>描述</th>
@@ -108,16 +117,167 @@
                                             <td>string</td>
                                             <td>是</td>
                                             <td>账号名</td>
-                                            <td></td>
+                                            <td>jayever@163.com</td>
                                         </tr><tr>
                                             <td>password</td>
                                             <td>string</td>
                                             <td>是</td>
                                             <td>密码</td>
-                                            <td></td>
+                                            <td>123456</td>
                                         </tr>                                    </tbody>
-                                </table>                                                
+                                </table>                        
                         
+                                                
+                        
+                    </div><div class="api-one">
+                        <h3 id="e816d57cd6934835ac1bfd3bcfa035c8">查询用户信息</h3>
+                        <p>
+                            <a target="_blank" href="http://apizza.cc/console/project/44d063591fd4f7283bbeed7e7ccff358/browse?api=e816d57cd6934835ac1bfd3bcfa035c8" class="label label-warning">在线测试</a>
+                            <a target="_blank" href="http://apizza.cc/console/project/44d063591fd4f7283bbeed7e7ccff358/browse?api=e816d57cd6934835ac1bfd3bcfa035c8" class="label label-warning">在线浏览</a>
+                        </p>
+                        <p>请求方式：GET</p>
+                        <p>
+                            请求地址：http://{{host}}/user/:id                        </p>
+                        
+                                                
+                                                    <table class="table table-hover">
+                                    <colgroup>
+                                    <col class="col-xs-2">
+                                    <col class="col-xs-1">
+                                    <col class="col-xs-1">
+                                    <col class="col-xs-7">
+                                    <col class="col-xs-2">
+                                  </colgroup>
+                                    <thead>
+                                         <tr>
+                                            <th><span class="label label-success">Body参数名</span></th>
+                                            <th>类型</th>
+                                            <th>必需</th>
+                                            <th>描述</th>
+                                            <th>示例 e.g.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>:id</td>
+                                            <td>string</td>
+                                            <td>否</td>
+                                            <td>用户id</td>
+                                            <td>59b5e74081c3261844d3dddf</td>
+                                        </tr>                                    </tbody>
+                                </table>                        
+                        <p>详细说明：</p>
+                        <p>
+                        <div class="detail-info">
+                            <div><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">id不存在时，返回当前登录的用户信息</span><div><span style="font-family: opensans, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Yahei&quot;, verdana, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);">指定id查询时，需要当前用户身份为admin</span><br></div></div>
+                        </div>
+                        </p>
+                        <p>返回示例：</p>
+                        <div class="highlight">
+                            <pre>
+                                <code class="json hljs">{
+&quot;errno&quot;: 0,
+&quot;errmsg&quot;: &quot;&quot;,
+&quot;data&quot;: {
+&quot;_id&quot;: &quot;59b5e74081c3261844d3dddf&quot;,
+&quot;account&quot;: &quot;jayever1@163.com&quot;,
+&quot;userName&quot;: &quot;jayever1&quot;,
+&quot;createTime&quot;: &quot;2017-09-11T01:30:40.617Z&quot;,
+&quot;updatedTime&quot;: &quot;2017-09-11T01:30:40.617Z&quot;,
+&quot;role&quot;: &quot;user&quot;
+}
+}</code>
+                            </pre>
+                        </div>                        
+                        
+                    </div><div class="api-one">
+                        <h3 id="381d5165ecde4677b3b27bdebdfa9249">更新用户信息</h3>
+                        <p>
+                            <a target="_blank" href="http://apizza.cc/console/project/44d063591fd4f7283bbeed7e7ccff358/browse?api=381d5165ecde4677b3b27bdebdfa9249" class="label label-warning">在线测试</a>
+                            <a target="_blank" href="http://apizza.cc/console/project/44d063591fd4f7283bbeed7e7ccff358/browse?api=381d5165ecde4677b3b27bdebdfa9249" class="label label-warning">在线浏览</a>
+                        </p>
+                        <p>请求方式：PUT</p>
+                        <p>
+                            请求地址：http://{{host}}/user/:id                        </p>
+                        
+                                                
+                                                    <table class="table table-hover">
+                                    <colgroup>
+                                    <col class="col-xs-2">
+                                    <col class="col-xs-1">
+                                    <col class="col-xs-1">
+                                    <col class="col-xs-7">
+                                    <col class="col-xs-2">
+                                  </colgroup>
+                                    <thead>
+                                         <tr>
+                                            <th><span class="label label-success">Body参数名</span></th>
+                                            <th>类型</th>
+                                            <th>必需</th>
+                                            <th>描述</th>
+                                            <th>示例 e.g.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>:id</td>
+                                            <td>string</td>
+                                            <td>否</td>
+                                            <td>用户id</td>
+                                            <td>59b6a40c4475512d173f5c49</td>
+                                        </tr>                                    </tbody>
+                                </table>                        
+                        <p>详细说明：</p>
+                        <p>
+                        <div class="detail-info">
+                            <div>不指定id时修改当前登录用户的信息<div><span style="color: rgb(0, 0, 0); font-family: opensans, &quot;Hiragino Sans GB&quot;, &quot;Microsoft Yahei&quot;, verdana, Helvetica, Arial, sans-serif;">指定id修改时，需要当前用户身份为admin</span><br></div></div>
+                        </div>
+                        </p>
+                                                
+                        
+                    </div><div class="api-one">
+                        <h3 id="ad98070fc3984d4daf92bbce39ff7f02">删除用户</h3>
+                        <p>
+                            <a target="_blank" href="http://apizza.cc/console/project/44d063591fd4f7283bbeed7e7ccff358/browse?api=ad98070fc3984d4daf92bbce39ff7f02" class="label label-warning">在线测试</a>
+                            <a target="_blank" href="http://apizza.cc/console/project/44d063591fd4f7283bbeed7e7ccff358/browse?api=ad98070fc3984d4daf92bbce39ff7f02" class="label label-warning">在线浏览</a>
+                        </p>
+                        <p>请求方式：DELETE</p>
+                        <p>
+                            请求地址：http://{{host}}/user/:id                        </p>
+                        
+                                                
+                                                    <table class="table table-hover">
+                                    <colgroup>
+                                    <col class="col-xs-2">
+                                    <col class="col-xs-1">
+                                    <col class="col-xs-1">
+                                    <col class="col-xs-7">
+                                    <col class="col-xs-2">
+                                  </colgroup>
+                                    <thead>
+                                         <tr>
+                                            <th><span class="label label-success">Body参数名</span></th>
+                                            <th>类型</th>
+                                            <th>必需</th>
+                                            <th>描述</th>
+                                            <th>示例 e.g.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>:id</td>
+                                            <td>string</td>
+                                            <td>是</td>
+                                            <td>用户id</td>
+                                            <td>59b6a40c4475512d173f5c49</td>
+                                        </tr>                                    </tbody>
+                                </table>                        
+                        <p>详细说明：</p>
+                        <p>
+                        <div class="detail-info">
+                            <div>必须是管理员权限</div>
+                        </div>
+                        </p>
                                                 
                         
                     </div><div class="api-one">
@@ -141,7 +301,7 @@
                                   </colgroup>
                                     <thead>
                                          <tr>
-                                            <th style="padding-left: 0px;"><span class="label label-success">Body参数名</span></th>
+                                            <th><span class="label label-success">Body参数名</span></th>
                                             <th>类型</th>
                                             <th>必需</th>
                                             <th>描述</th>
@@ -154,78 +314,17 @@
                                             <td>string</td>
                                             <td>是</td>
                                             <td>账号名</td>
-                                            <td></td>
+                                            <td>jayever@163.com</td>
                                         </tr><tr>
                                             <td>password</td>
                                             <td>string</td>
                                             <td>是</td>
                                             <td>密码</td>
-                                            <td></td>
-                                        </tr>                                    </tbody>
-                                </table>                                                
-                        
-                                                
-                        
-                    </div><div class="api-one">
-                        <h3 id="e816d57cd6934835ac1bfd3bcfa035c8">查询用户信息</h3>
-                        <p>
-                            <a target="_blank" href="http://apizza.cc/console/project/44d063591fd4f7283bbeed7e7ccff358/browse?api=e816d57cd6934835ac1bfd3bcfa035c8" class="label label-warning">在线测试</a>
-                            <a target="_blank" href="http://apizza.cc/console/project/44d063591fd4f7283bbeed7e7ccff358/browse?api=e816d57cd6934835ac1bfd3bcfa035c8" class="label label-warning">在线浏览</a>
-                        </p>
-                        <p>请求方式：GET</p>
-                        <p>
-                            请求地址：http://{{host}}/user                        </p>
-                        
-                                                
-                                                    <table class="table table-hover">
-                                    <colgroup>
-                                    <col class="col-xs-2">
-                                    <col class="col-xs-1">
-                                    <col class="col-xs-1">
-                                    <col class="col-xs-7">
-                                    <col class="col-xs-2">
-                                  </colgroup>
-                                    <thead>
-                                         <tr>
-                                            <th><span class="label label-success">Body参数名</span></th>
-                                            <th>类型</th>
-                                            <th>必需</th>
-                                            <th>描述</th>
-                                            <th>示例 e.g.</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>id</td>
-                                            <td>string</td>
-                                            <td>否</td>
-                                            <td>用户id</td>
-                                            <td>59b5e74081c3261844d3dddf</td>
+                                            <td>123456</td>
                                         </tr>                                    </tbody>
                                 </table>                        
-                        <p>详细说明：</p>
-                        <p>
-                        <div class="detail-info">
-                            <div>id不存在时，返回当前登录的用户信息<div>指定id时，需要当前用户身份为admin，否则返回权限不足</div></div>
-                        </div>
-                        </p>
-                        <p>返回示例：</p>
-                        <div class="highlight">
-                            <pre>
-                                <code class="json hljs">{
-&quot;errno&quot;: 0,
-&quot;errmsg&quot;: &quot;&quot;,
-&quot;data&quot;: {
-&quot;_id&quot;: &quot;59b5e74081c3261844d3dddf&quot;,
-&quot;account&quot;: &quot;jayever1@163.com&quot;,
-&quot;userName&quot;: &quot;jayever1&quot;,
-&quot;createTime&quot;: &quot;2017-09-11T01:30:40.617Z&quot;,
-&quot;updatedTime&quot;: &quot;2017-09-11T01:30:40.617Z&quot;,
-&quot;role&quot;: &quot;user&quot;
-}
-}</code>
-                            </pre>
-                        </div>                        
+                        
+                                                
                         
                     </div><div class="api-one">
                         <h3 id="fb77a88624174607aa3667f6276b5527">登出</h3>
@@ -242,7 +341,7 @@
                         <p>详细说明：</p>
                         <p>
                         <div class="detail-info">
-                            <div>清除用户cookie信息</div>
+                            <div>清除当前用户的cookie信息</div>
                         </div>
                         </p>
                                                 
@@ -268,7 +367,7 @@
                                   </colgroup>
                                     <thead>
                                          <tr>
-                                            <th style="padding-left: 0px;"><span class="label label-success">Body参数名</span></th>
+                                            <th><span class="label label-success">Body参数名</span></th>
                                             <th>类型</th>
                                             <th>必需</th>
                                             <th>描述</th>
@@ -281,27 +380,27 @@
                                             <td>string</td>
                                             <td>是</td>
                                             <td>活动标题</td>
-                                            <td></td>
+                                            <td>吃火锅</td>
                                         </tr><tr>
                                             <td>content</td>
                                             <td>string</td>
                                             <td>是</td>
                                             <td>活动详情</td>
-                                            <td></td>
+                                            <td>小肥羊</td>
                                         </tr><tr>
                                             <td>date</td>
                                             <td>date</td>
                                             <td>否</td>
                                             <td>活动时间</td>
-                                            <td></td>
+                                            <td>2017-9-15</td>
                                         </tr><tr>
                                             <td>location</td>
                                             <td>string</td>
                                             <td>否</td>
                                             <td>活动地点</td>
-                                            <td></td>
+                                            <td>大卫城</td>
                                         </tr>                                    </tbody>
-                                </table>                                                
+                                </table>                        
                         
                                                 
                         
@@ -430,6 +529,96 @@
                                     <th>boolean</th>
                                 </tr>                            </tbody>
                         </table>
+                    </div><div class="api-one">
+                        <h3 id="a62e42984b334f92bf7a0b7fd8bb9454">修改活动</h3>
+                        <p>
+                            <a target="_blank" href="http://apizza.cc/console/project/44d063591fd4f7283bbeed7e7ccff358/browse?api=a62e42984b334f92bf7a0b7fd8bb9454" class="label label-warning">在线测试</a>
+                            <a target="_blank" href="http://apizza.cc/console/project/44d063591fd4f7283bbeed7e7ccff358/browse?api=a62e42984b334f92bf7a0b7fd8bb9454" class="label label-warning">在线浏览</a>
+                        </p>
+                        <p>请求方式：PUT</p>
+                        <p>
+                            请求地址：http://{{host}}/post/:id                        </p>
+                        
+                                                
+                                                    <table class="table table-hover">
+                                    <colgroup>
+                                    <col class="col-xs-2">
+                                    <col class="col-xs-1">
+                                    <col class="col-xs-1">
+                                    <col class="col-xs-7">
+                                    <col class="col-xs-2">
+                                  </colgroup>
+                                    <thead>
+                                         <tr>
+                                            <th style="padding-left: 0px;"><span class="label label-success">Body参数名</span></th>
+                                            <th>类型</th>
+                                            <th>必需</th>
+                                            <th>描述</th>
+                                            <th>示例 e.g.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>:id</td>
+                                            <td>string</td>
+                                            <td>是</td>
+                                            <td>活动id</td>
+                                            <td></td>
+                                        </tr>                                    </tbody>
+                                </table>                                                
+                        <p>详细说明：</p>
+                        <p>
+                        <div class="detail-info">
+                            <div>需要管理员身份或者当前登录用户为该活动作者</div>
+                        </div>
+                        </p>
+                                                
+                        
+                    </div><div class="api-one">
+                        <h3 id="4fb0bae3accb4384bcbc0ace9fad0f20">删除活动</h3>
+                        <p>
+                            <a target="_blank" href="http://apizza.cc/console/project/44d063591fd4f7283bbeed7e7ccff358/browse?api=4fb0bae3accb4384bcbc0ace9fad0f20" class="label label-warning">在线测试</a>
+                            <a target="_blank" href="http://apizza.cc/console/project/44d063591fd4f7283bbeed7e7ccff358/browse?api=4fb0bae3accb4384bcbc0ace9fad0f20" class="label label-warning">在线浏览</a>
+                        </p>
+                        <p>请求方式：DELETE</p>
+                        <p>
+                            请求地址：http://{{host}}/post/:id                        </p>
+                        
+                                                
+                                                    <table class="table table-hover">
+                                    <colgroup>
+                                    <col class="col-xs-2">
+                                    <col class="col-xs-1">
+                                    <col class="col-xs-1">
+                                    <col class="col-xs-7">
+                                    <col class="col-xs-2">
+                                  </colgroup>
+                                    <thead>
+                                         <tr>
+                                            <th><span class="label label-success">Body参数名</span></th>
+                                            <th>类型</th>
+                                            <th>必需</th>
+                                            <th>描述</th>
+                                            <th>示例 e.g.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>:id</td>
+                                            <td>string</td>
+                                            <td>是</td>
+                                            <td>活动id</td>
+                                            <td></td>
+                                        </tr>                                    </tbody>
+                                </table>                        
+                        <p>详细说明：</p>
+                        <p>
+                        <div class="detail-info">
+                            <div>需要管理员权限或者当前登录用户为该活动作者</div>
+                        </div>
+                        </p>
+                                                
+                        
                     </div><div class="api-one">
                         <h3 id="fb83f514335e412f931e7e6bed0032bb">报名活动</h3>
                         <p>

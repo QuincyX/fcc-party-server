@@ -17,7 +17,6 @@ module.exports = class extends BaseRest {
     if (this.jwt) {
       let para = this.post()
       para.auther = this.jwt.id
-      para.register.push(this.jwt.id)
       await this.modelInstance.add(para).then(res => {
         return this.success(res)
       }).catch(err => {

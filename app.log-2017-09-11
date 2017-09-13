@@ -1,0 +1,9 @@
+[2017-09-11 22:20:34.097] [INFO] [default] - Server running at http://127.0.0.1:8360
+[2017-09-11 22:20:34.097] [INFO] [default] - ThinkJS version: 3.1.1
+[2017-09-11 22:20:34.097] [INFO] [default] - Enviroment: production
+[2017-09-11 22:20:34.098] [INFO] [default] - Workers: 1
+[2017-09-11 22:21:15.571] [INFO] [default] - Server running at http://127.0.0.1:8360
+[2017-09-11 22:21:15.571] [INFO] [default] - ThinkJS version: 3.1.1
+[2017-09-11 22:21:15.571] [INFO] [default] - Enviroment: production
+[2017-09-11 22:21:15.571] [INFO] [default] - Workers: 1
+[2017-09-11 22:56:09.257] [INFO] [default] - mongodb://127.0.0.1:27017/fcc-party?

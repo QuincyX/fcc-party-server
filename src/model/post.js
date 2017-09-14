@@ -53,6 +53,7 @@ module.exports = class extends think.Mongoose {
       let Post = this.mongoose('post')
       val.createTime = Date.now()
       let newPost = new Post(val)
+      newPost.register.push(val.auther)
       newPost.save((err, res) => {
         if (err) {
           reject(err)

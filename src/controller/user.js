@@ -36,7 +36,7 @@ module.exports = class extends BaseRest {
   }
   async putAction() {
     console.log('>>>>>')
-    
+
     if (this.jwt) {
       if (this.get('id')) {
         if (this.jwt.role === 'admin') {

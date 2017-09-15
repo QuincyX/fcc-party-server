@@ -1,7 +1,7 @@
 const BaseRest = require('./rest.js');
 
 module.exports = class extends BaseRest {
-  getAction() {
+  async getAction() {
     if (this.jwt) {
       this.cookie('token', null)
       this.success('登出成功')

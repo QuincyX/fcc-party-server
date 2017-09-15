@@ -16,27 +16,37 @@ module.exports = class extends think.Mongoose {
       },
       date: {
         type: Date,
-        default() {
+        default () {
           return new Date((new Date() / 1000 + 86400 * 1) * 1000)
         }
       },
       location: {
-        type: String
+        type: String,
+        default: ''
+      },
+      type: {
+        type: String,
+        default: ''
       },
       register: {
-        type: Array
+        type: Array,
+        default: []
       },
       attendance: {
-        type: Array
+        type: Array,
+        default: []
       },
       read: {
-        type: Number
+        type: Number,
+        default: 1
       },
       heart: {
-        type: Number
+        type: Number,
+        default: 0
       },
       close: {
-        type: Boolean
+        type: Boolean,
+        default: false
       },
       createTime: {
         type: Date,
@@ -49,7 +59,7 @@ module.exports = class extends think.Mongoose {
     }
   }
   add(val) {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async(resolve, reject) => {
       let Post = this.mongoose('post')
       val.createTime = Date.now()
       let newPost = new Post(val)
@@ -63,7 +73,6 @@ module.exports = class extends think.Mongoose {
         }
       })
     })
-
   }
   async getList(val) {
     let Post = this.mongoose('post')
@@ -74,7 +83,7 @@ module.exports = class extends think.Mongoose {
     return data
   }
   getOne(val) {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async(resolve, reject) => {
       let Post = this.mongoose('post')
       Post.findById(val, (err, res) => {
         if (err) {
@@ -116,7 +125,7 @@ module.exports = class extends think.Mongoose {
     })
   }
   register(val) {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async(resolve, reject) => {
       let Post = this.mongoose('post')
       Post.findById(val.postId, (err, res) => {
         if (err) {
@@ -147,7 +156,7 @@ module.exports = class extends think.Mongoose {
     })
   }
   checkin(val) {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async(resolve, reject) => {
       let Post = this.mongoose('post')
       Post.findById(val.postId, (err, res) => {
         if (err) {

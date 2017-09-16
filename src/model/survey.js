@@ -26,7 +26,7 @@ module.exports = class extends think.Mongoose {
       },
       endTime: {
         type: Date,
-        default () {
+        default() {
           return new Date((new Date() / 1000 + 86400 * 1) * 3000)
         }
       },
@@ -42,11 +42,11 @@ module.exports = class extends think.Mongoose {
     }
   }
   add(val) {
-    return new Promise(async(resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       let Survey = this.mongoose('survey')
       let Question = this.mongoose('question')
       let newSurvey = new Survey(val)
-      newSurvey.save(async(err, res) => {
+      newSurvey.save(async (err, res) => {
         if (err) {
           reject(err)
         } else {
@@ -73,7 +73,7 @@ module.exports = class extends think.Mongoose {
     let Survey = this.mongoose('survey')
     let Question = this.mongoose('question')
     return new Promise((resolve, reject) => {
-      Survey.findById(id, async(err, doc) => {
+      Survey.findById(id, async (err, doc) => {
         if (err) {
           reject(err)
         } else {
@@ -84,6 +84,5 @@ module.exports = class extends think.Mongoose {
         }
       })
     })
-
   }
 }

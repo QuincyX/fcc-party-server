@@ -14,7 +14,17 @@ module.exports = class extends BaseRest {
     }
   }
   async postAction() {
-    if (this.jwt) {
+    if (this.getId()) {
+      // 答题
+      let Answer = this.mongoose('answer')
+      let para = this.post().answer
+      await Answer.updateAll(para).then(res => {
+        return this.success(res)
+      }).catch(err => {
+        return this.fail(err)
+      })
+    } else if (this.jwt) {
+      // 新建问卷
       let para = this.post()
       para.auther = this.jwt.id
       await this.modelInstance.add(para).then(res => {

@@ -133,7 +133,7 @@ module.exports = class extends think.Mongoose {
   update(val) {
     return new Promise(async(resolve, reject) => {
       let User = this.mongoose('user')
-      // val.password = undefined
+      val.password = undefined
       User.findByIdAndUpdate(val.id, val, (err, doc) => {
         if (err) {
           reject(err)

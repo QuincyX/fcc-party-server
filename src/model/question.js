@@ -7,11 +7,15 @@ module.exports = class extends think.Mongoose {
         default: ''
       },
       content: {
-        type: String
+        type: String,
+        default: ''
       },
       type: {
-        type: Number,
-        default: 1
+        type: String,
+        default: 'radio'
+      },
+      require: {
+        type: think.Mongoose.Schema.Types.ObjectId
       },
       answer: {
         type: Array
@@ -39,7 +43,7 @@ module.exports = class extends think.Mongoose {
     let Question = this.mongoose('question')
     let Answer = this.mongoose('answer')
     return new Promise((resolve, reject) => {
-      Question.create(val, async(err, res) => {
+      Question.create(val, async (err, res) => {
         if (err) {
           reject(err)
         } else {
